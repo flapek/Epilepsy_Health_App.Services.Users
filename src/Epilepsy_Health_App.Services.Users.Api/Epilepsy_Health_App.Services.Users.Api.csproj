@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<UserSecretsId>46f44e65-64b3-4864-ac35-3b839699d98c</UserSecretsId>
+		<GenerateDocumentationFile>true</GenerateDocumentationFile>
+		<NoWarn>$(NoWarn);1591</NoWarn>
+		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Joint" Version="0.0.133" />
+		<PackageReference Include="Joint.Docs.Swagger" Version="0.0.133" />
+		<PackageReference Include="Joint.Logging" Version="0.0.133" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Epilepsy_Health_App.Services.Users.Application\Epilepsy_Health_App.Services.Users.Application.csproj" />
+		<ProjectReference Include="..\Epilepsy_Health_App.Services.Users.Infrastructure\Epilepsy_Health_App.Services.Users.Infrastructure.csproj" />
+	</ItemGroup>
+
+
+</Project>
