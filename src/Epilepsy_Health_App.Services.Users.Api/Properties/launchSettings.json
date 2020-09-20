@@ -19,11 +19,20 @@
     },
     "Epilepsy_Health_App.Services.Users.Api": {
       "commandName": "Project",
-      "launchBrowser": true,
-      "launchUrl": "weatherforecast",
-      "applicationUrl": "https://localhost:5001;http://localhost:5000",
+      "launchBrowser": false,
+      "applicationUrl": "http://localhost:5002;https://localhost:6002",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "WSL 2": {
+        "commandName": "WSL2",
+        "launchBrowser": true,
+        "launchUrl": "https://localhost:6002/docs",
+        "environmentVariables": {
+          "ASPNETCORE_URLS": "http://localhost:5002;https://localhost:6002",
+          "ASPNETCORE_ENVIRONMENT": "Development"
+        },
+        "distributionName": ""
       }
     }
   }
