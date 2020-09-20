@@ -4,5 +4,16 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Joint" Version="0.0.133" />
+    <PackageReference Include="Joint.Docs.Swagger" Version="0.0.133" />
+    <PackageReference Include="Joint.Logging" Version="0.0.133" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Epilepsy_Health_App.Services.Users.Application\Epilepsy_Health_App.Services.Users.Application.csproj" />
+    <ProjectReference Include="..\Epilepsy_Health_App.Services.Users.Infrastructure\Epilepsy_Health_App.Services.Users.Infrastructure.csproj" />
+  </ItemGroup>
+
 
 </Project>
