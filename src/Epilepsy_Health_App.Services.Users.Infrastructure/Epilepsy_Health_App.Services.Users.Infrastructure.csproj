@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Mongo\Repositories\" />
     <Folder Include="Mongo\Queries\" />
     <Folder Include="Services\" />
   </ItemGroup>
