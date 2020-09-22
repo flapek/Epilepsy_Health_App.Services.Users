@@ -40,8 +40,15 @@ namespace Epilepsy_Health_App.Services.Users.Api.Controllers
                 Emails = email
             }));
 
+        /// <summary>
+        /// Update user
+        /// </summary>
+        /// <param name="command">what you want update</param>
+        /// <returns>Status 202 if request pass succesfuly</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Update([FromBody] UpdateUser command) => Accepted(_commandDispatcher.SendAsync(command));
 
     }

@@ -1,11 +1,14 @@
-﻿using Epilepsy_Health_App.Services.Users.Infrastructure.Exceptions;
+﻿using Epilepsy_Health_App.Services.Users.Core.Repositories;
+using Epilepsy_Health_App.Services.Users.Infrastructure.Exceptions;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Documents;
+using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories;
 using Joint.Builders;
 using Joint.CQRS.Queries;
 using Joint.DB.Mongo;
 using Joint.Exception;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 using System;
 
 namespace Epilepsy_Health_App.Services.Users.Infrastructure
@@ -14,6 +17,7 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure
     {
         public static IJointBuilder AddInfrastructure(this IJointBuilder builder)
         {
+            builder.Services.AddTransient<IUserRepository, UserRepository>();
 
             return builder
                 .AddMongo()
