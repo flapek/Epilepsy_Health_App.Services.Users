@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Epilepsy_Health_App.Services.Users.Application.Commands;
 using Epilepsy_Health_App.Services.Users.Application.DTO;
 using Epilepsy_Health_App.Services.Users.Application.Queries;
 using Joint.CQRS.Commands;
@@ -38,5 +39,10 @@ namespace Epilepsy_Health_App.Services.Users.Api.Controllers
                 Ids = id,
                 Emails = email
             }));
+
+        [HttpPost]
+        [ProducesResponseType(StatusCodes.Status202Accepted)]
+        public async Task<IActionResult> Update([FromBody] UpdateUser command) => Accepted(_commandDispatcher.SendAsync(command));
+
     }
 }

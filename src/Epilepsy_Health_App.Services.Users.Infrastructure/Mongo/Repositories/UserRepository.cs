@@ -42,7 +42,7 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories
             throw new NotImplementedException();
         }
 
-        public Task<bool> UpdateAsync(Guid id, User user)
+        public Task UpdateAsync(Guid id, User user)
         {
             throw new NotImplementedException();
         }

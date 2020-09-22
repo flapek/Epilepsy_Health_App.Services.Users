@@ -7,6 +7,7 @@ namespace Epilepsy_Health_App.Services.Users.Core.Repositories
 {
     public interface IUserRepository
     {
+        #region Get
         /// <summary>
         /// Get all users
         /// </summary>
@@ -40,5 +41,10 @@ namespace Epilepsy_Health_App.Services.Users.Core.Repositories
         /// <param name="emails">filter</param>
         /// <returns>All users match to email</returns>
         Task<List<User>> GetAsync(List<string> emails);
+        #endregion
+
+        #region Update
+        Task UpdateAsync(Guid id, User user);
+        #endregion
     }
 }
