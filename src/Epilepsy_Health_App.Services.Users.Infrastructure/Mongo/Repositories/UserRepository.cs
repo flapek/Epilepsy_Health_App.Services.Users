@@ -17,9 +17,11 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories
             _repository = repository;
         }
 
-        public Task<List<User>> GetAsync()
+        public async Task<List<User>> GetAsync()
         {
-            throw new NotImplementedException();
+            var user = await _repository.FindAsync(x => true);
+
+            return user?.AsEntityList();
         }
 
         public Task<User> GetAsync(Guid id)

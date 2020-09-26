@@ -1,4 +1,5 @@
 ﻿using Epilepsy_Health_App.Services.Users.Core.Repositories;
+using Epilepsy_Health_App.Services.Users.Infrastructure.AutoMapper;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Exceptions;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Documents;
@@ -18,6 +19,7 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure
         public static IJointBuilder AddInfrastructure(this IJointBuilder builder)
         {
             builder.Services.AddTransient<IUserRepository, UserRepository>();
+            builder.Services.AddAutoMapperProfile();
 
             return builder
                 .AddMongo()
