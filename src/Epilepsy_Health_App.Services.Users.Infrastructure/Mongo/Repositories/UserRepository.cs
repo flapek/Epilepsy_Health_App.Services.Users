@@ -4,6 +4,7 @@ using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Documents;
 using Joint.DB.Mongo;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories
@@ -12,41 +13,26 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories
     {
         private readonly IMongoRepository<UserDocument, Guid> _repository;
 
-        public UserRepository(IMongoRepository<UserDocument, Guid> repository)
-        {
-            _repository = repository;
-        }
+        public UserRepository(IMongoRepository<UserDocument, Guid> repository) 
+            => _repository = repository;
 
         public async Task<List<User>> GetAsync()
-        {
-            var user = await _repository.FindAsync(x => true);
+            => (await _repository.FindAsync(x => true))?.AsEntityList();
 
-            return user?.AsEntityList();
-        }
+        public async Task<User> GetAsync(Guid id)
+            => (await _repository.GetAsync(id)).AsEntity();
 
-        public Task<User> GetAsync(Guid id)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<User> GetAsync(string email)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task<User> GetAsync(string email)
+            => (await _repository.GetAsync(x => x.Email == email)).AsEntity();
 
         public Task<List<User>> GetAsync(List<Guid> ids)
-        {
-            throw new NotImplementedException();
-        }
+            => Task.FromResult(ids.Select(id => _repository.GetAsync(id).Result.AsEntity()).ToList());
 
         public Task<List<User>> GetAsync(List<string> emails)
-        {
-            throw new NotImplementedException();
-        }
+            => Task.FromResult(emails.Select(email => _repository.GetAsync(x => x.Email == email).Result.AsEntity()).ToList());
 
-        public Task UpdateAsync(Guid id, User user)
-        {
-            throw new NotImplementedException();
-        }
+        public async Task UpdateAsync(Guid id, User user) 
+            => await _repository.UpdateAsync(user.AsDocument(), x => x.Id == id);
+
     }
 }
