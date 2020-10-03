@@ -7,7 +7,9 @@ using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories;
 using Joint.Builders;
 using Joint.CQRS.Queries;
 using Joint.DB.Mongo;
+using Joint.Discovery.Consul;
 using Joint.Exception;
+using Joint.HTTP;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -22,6 +24,8 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure
             builder.Services.AddAutoMapperProfile();
 
             return builder
+                .AddHttpClient()
+                .AddConsul()
                 .AddMongo()
                 .AddMongoRepository<UserDocument, Guid>("users")
                 .AddErrorHandler<ExceptionToResponseMapper>()

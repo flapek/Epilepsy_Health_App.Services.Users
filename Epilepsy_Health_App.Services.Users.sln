@@ -7,15 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{CE0341C3-9CC
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{57B323ED-10A2-4CEE-9969-9CA8EBB9AE7E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epilepsy_Health_App.Services.Users.Api", "src\Epilepsy_Health_App.Services.Users.Api\Epilepsy_Health_App.Services.Users.Api.csproj", "{C67E9D8F-AFBB-46D7-93BA-128C5EEB613F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Epilepsy_Health_App.Services.Users.Api", "src\Epilepsy_Health_App.Services.Users.Api\Epilepsy_Health_App.Services.Users.Api.csproj", "{C67E9D8F-AFBB-46D7-93BA-128C5EEB613F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epilepsy_Health_App.Services.Users.Core", "src\Epilepsy_Health_App.Services.Users.Core\Epilepsy_Health_App.Services.Users.Core.csproj", "{8ABFAD31-4793-4BC7-9D85-3FA793B473E4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Epilepsy_Health_App.Services.Users.Core", "src\Epilepsy_Health_App.Services.Users.Core\Epilepsy_Health_App.Services.Users.Core.csproj", "{8ABFAD31-4793-4BC7-9D85-3FA793B473E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epilepsy_Health_App.Services.Users.Application", "src\Epilepsy_Health_App.Services.Users.Application\Epilepsy_Health_App.Services.Users.Application.csproj", "{2D46F5EE-39E8-4C69-B329-274F00597745}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Epilepsy_Health_App.Services.Users.Application", "src\Epilepsy_Health_App.Services.Users.Application\Epilepsy_Health_App.Services.Users.Application.csproj", "{2D46F5EE-39E8-4C69-B329-274F00597745}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epilepsy_Health_App.Services.Users.Infrastructure", "src\Epilepsy_Health_App.Services.Users.Infrastructure\Epilepsy_Health_App.Services.Users.Infrastructure.csproj", "{5BE69434-9D94-4C2A-8969-47BB444CC5A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Epilepsy_Health_App.Services.Users.Infrastructure", "src\Epilepsy_Health_App.Services.Users.Infrastructure\Epilepsy_Health_App.Services.Users.Infrastructure.csproj", "{5BE69434-9D94-4C2A-8969-47BB444CC5A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Epilepsy_Health_App.Services.Users.UnitTest", "test\Epilepsy_Health_App.Services.Users.UnitTest\Epilepsy_Health_App.Services.Users.UnitTest.csproj", "{C5451B27-B9A4-49C8-91F8-201F90225487}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Epilepsy_Health_App.Services.Users.UnitTest", "test\Epilepsy_Health_App.Services.Users.UnitTest\Epilepsy_Health_App.Services.Users.UnitTest.csproj", "{C5451B27-B9A4-49C8-91F8-201F90225487}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

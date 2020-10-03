@@ -9,9 +9,9 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Joint" Version="0.0.133" />
-		<PackageReference Include="Joint.Docs.Swagger" Version="0.0.133" />
-		<PackageReference Include="Joint.Logging" Version="0.0.133" />
+		<PackageReference Include="Joint" Version="0.0.136" />
+		<PackageReference Include="Joint.Docs.Swagger" Version="0.0.136" />
+		<PackageReference Include="Joint.Logging" Version="0.0.136" />
 	</ItemGroup>
 
 	<ItemGroup>
