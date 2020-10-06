@@ -7,11 +7,11 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="10.0.0" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.0.1" />
-    <PackageReference Include="Joint" Version="0.0.136" />
-    <PackageReference Include="Joint.CQRS.Queries" Version="0.0.136" />
-    <PackageReference Include="Joint.DB.Mongo" Version="0.0.136" />
-    <PackageReference Include="Joint.Discovery.Consul" Version="0.0.136" />
-    <PackageReference Include="Joint.Exception" Version="0.0.136" />
+    <PackageReference Include="Joint" Version="0.0.142" />
+    <PackageReference Include="Joint.CQRS.Queries" Version="0.0.142" />
+    <PackageReference Include="Joint.DB.Mongo" Version="0.0.142" />
+    <PackageReference Include="Joint.Discovery.Consul" Version="0.0.142" />
+    <PackageReference Include="Joint.Exception" Version="0.0.142" />
   </ItemGroup>
 
   <ItemGroup>

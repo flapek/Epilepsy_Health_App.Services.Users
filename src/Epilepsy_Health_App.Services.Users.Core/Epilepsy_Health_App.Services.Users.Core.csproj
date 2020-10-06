@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Joint.Exception" Version="0.0.136" />
+    <PackageReference Include="Joint.Exception" Version="0.0.142" />
   </ItemGroup>
 
 </Project>
