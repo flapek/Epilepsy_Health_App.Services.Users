@@ -7,7 +7,6 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
     {
         public string Email { get; private set; }
         public string Password { get; private set; }
-        public DateTime CreatedAt { get; private set; }
         public bool Anonymous { get; private set; }
         public string Firstname { get; private set; }
         public string Lastname { get; private set; }
@@ -15,16 +14,8 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
         public double Height { get; private set; }
         public DateTime DayOfBirth { get; private set; }
 
-        public User(Guid id, string email, string password, DateTime createdAt)
-        {
-            Id = id;
-            Email = email.ToLowerInvariant();
-            Password = password;
-            CreatedAt = createdAt;
-        }
-
-        public User(string email, string password, DateTime createdAt, bool anonymous,
-            string firstname, string lastname, double weight, double height, DateTime dayOfBirth)
+        public User(Guid id, bool anonymous, string firstname, 
+            string lastname, double height, double weight, DateTime dayOfBirth)
         {
             if (anonymous)
             {
@@ -34,15 +25,21 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
 
             CheckName(firstname, lastname);
 
-            Email = email;
-            Password = password;
-            CreatedAt = createdAt;
+            Id = id;
             Anonymous = anonymous;
             Firstname = firstname;
             Lastname = lastname;
-            Weight = weight;
             Height = height;
+            Weight = weight;
             DayOfBirth = dayOfBirth;
+        }
+        
+        public User(Guid id, string email, string password, bool anonymous,
+            string firstname, string lastname, double weight, double height, DateTime dayOfBirth) 
+            : this(id, anonymous, firstname, lastname, height, weight, dayOfBirth)
+        {            
+            Email = email;
+            Password = password;
         }
 
         private bool CheckName(string firstName, string lastName)

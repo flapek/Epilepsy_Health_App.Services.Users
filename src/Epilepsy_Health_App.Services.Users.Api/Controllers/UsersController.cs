@@ -49,7 +49,7 @@ namespace Epilepsy_Health_App.Services.Users.Api.Controllers
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Update([FromBody] UpdateUser command) 
+        public async Task<IActionResult> Update([FromBody] UpdateUserData command) 
             => Accepted(_commandDispatcher.SendAsync(command));
 
     }
