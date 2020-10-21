@@ -45,11 +45,12 @@ namespace Epilepsy_Health_App.Services.Users.Api.Controllers
         /// </summary>
         /// <param name="command">what you want update</param>
         /// <returns>Status 202 if request pass succesfuly</returns>
-        [HttpPost]
+        [HttpPost("update")]
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Update([FromBody] UpdateUser command) => Accepted(_commandDispatcher.SendAsync(command));
+        public async Task<IActionResult> Update([FromBody] UpdateUser command) 
+            => Accepted(_commandDispatcher.SendAsync(command));
 
     }
 }
