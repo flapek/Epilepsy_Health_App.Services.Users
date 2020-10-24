@@ -14,7 +14,7 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
         public double Height { get; private set; }
         public DateTime DayOfBirth { get; private set; }
 
-        public User(Guid id, bool anonymous, string firstname, 
+        public User(Guid id, bool anonymous, string firstname,
             string lastname, double height, double weight, DateTime dayOfBirth)
         {
             if (anonymous)
@@ -22,8 +22,8 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
                 firstname = "";
                 lastname = "";
             }
-
-            CheckName(firstname, lastname);
+            else
+                CheckName(firstname, lastname);
 
             Id = id;
             Anonymous = anonymous;
@@ -33,11 +33,11 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
             Weight = weight;
             DayOfBirth = dayOfBirth;
         }
-        
+
         public User(Guid id, string email, string password, bool anonymous,
-            string firstname, string lastname, double weight, double height, DateTime dayOfBirth) 
+            string firstname, string lastname, double weight, double height, DateTime dayOfBirth)
             : this(id, anonymous, firstname, lastname, height, weight, dayOfBirth)
-        {            
+        {
             Email = email;
             Password = password;
         }
@@ -46,9 +46,9 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
         {
             return string.IsNullOrEmpty(firstName)
                 ? throw new UserFirstnameException()
-                : string.IsNullOrEmpty(lastName) 
-                ? throw new UserLastnameException() 
-                : true; 
+                : string.IsNullOrEmpty(lastName)
+                ? throw new UserLastnameException()
+                : true;
         }
     }
 }

@@ -7,7 +7,8 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Documents
     internal static class Extensions
     {
         public static User AsEntity(this UserDocument document)
-            => new User(document.Id, document.Email, document.Password, document.CreatedAt);
+            => new User(document.Id, document.Email, document.Password, document.Anonymous, document.Firstname,
+                document.Lastname, document.Weight, document.Height, document.DayOfBirth);
 
         public static UserDocument AsDocument(this User entity)
             => new UserDocument
@@ -15,10 +16,15 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Documents
                 Id = entity.Id,
                 Email = entity.Email,
                 Password = entity.Password,
-                CreatedAt = entity.CreatedAt
+                Anonymous = entity.Anonymous,
+                Firstname = entity.Firstname,
+                Lastname = entity.Lastname,
+                Weight = entity.Weight,
+                Height = entity.Height,
+                DayOfBirth = entity.DayOfBirth
             };
 
-        public static List<User> AsEntityList(this IReadOnlyList<UserDocument> userDocuments) 
+        public static List<User> AsEntityList(this IReadOnlyList<UserDocument> userDocuments)
             => userDocuments.Select(document => document.AsEntity()).ToList();
 
         public static List<UserDocument> AsDocumentList(this List<User> userDocuments)

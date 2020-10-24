@@ -17,7 +17,7 @@ namespace Epilepsy_Health_App.Services.Users.Api
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                    webBuilder.UseVault();
+                    //webBuilder.UseVault();
                 })
             .UseLogging();
             

@@ -3,6 +3,7 @@ using Epilepsy_Health_App.Services.Users.Application.DTO;
 using Epilepsy_Health_App.Services.Users.Application.Queries;
 using Epilepsy_Health_App.Services.Users.Core.Repositories;
 using Joint.CQRS.Queries;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Epilepsy_Health_App.Services.Users.Infrastructure.Queries.Handlers
@@ -23,7 +24,11 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Queries.Handlers
             if (query.Emails.Count == 0 && query.Ids.Count == 0)
                 return _mapper.Map<UsersDto>(await _userRepository.GetAsync());
 
-            return null;
+            var result = new UsersDto();
+            result.userDtos.AddRange(_mapper.Map<List<UserDto>>(await _userRepository.GetAsync(query.Ids)));
+            result.userDtos.AddRange(_mapper.Map<List<UserDto>>(await _userRepository.GetAsync(query.Emails)));
+
+            return result;
         }
     }
 }
