@@ -1,21 +1,19 @@
 ﻿using Epilepsy_Health_App.Services.Users.Application.Controllers;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Exceptions;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Claims;
 
 namespace Epilepsy_Health_App.Services.Users.Infrastructure.Controllers
 {
     internal sealed class ClaimsController : IClaimsController
     {
-        public Guid GetId(ClaimsIdentity identity)
+        public Guid GetId(IEnumerable<Claim> claims)
         {
-            if (identity is null)
-                throw new EmptyClaimsException();
-
-            if (Guid.TryParse(identity.FindFirst("sub").Value, out var result))
-                return result;
-
-            throw new EmptyClaimsException();
+            return claims is null
+                ? throw new EmptyClaimsException()
+                : Guid.TryParse(claims.FirstOrDefault(x => x.Type == "sub").Value, out var result) ? result : throw new EmptyClaimsException();
         }
     }
 }

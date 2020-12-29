@@ -39,7 +39,9 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure
         public static IApplicationBuilder UseInfrastructure(this IApplicationBuilder app)
         {
             app.UseErrorHandler()
-                .UseMongo();
+                .UseMongo()
+                .UseAuthentication()
+                .UseAuthorization();
 
             return app;
         }
