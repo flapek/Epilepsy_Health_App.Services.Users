@@ -22,8 +22,6 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
                 firstname = "";
                 lastname = "";
             }
-            else
-                CheckName(firstname, lastname);
 
             Id = id;
             Anonymous = anonymous;
@@ -40,15 +38,6 @@ namespace Epilepsy_Health_App.Services.Users.Core.Entities
         {
             Email = email;
             Password = password;
-        }
-
-        private bool CheckName(string firstName, string lastName)
-        {
-            return string.IsNullOrEmpty(firstName)
-                ? throw new UserFirstnameException()
-                : string.IsNullOrEmpty(lastName)
-                ? throw new UserLastnameException()
-                : true;
         }
     }
 }

@@ -1,17 +1,21 @@
 ﻿using Epilepsy_Health_App.Services.Users.Application.Controllers;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Exceptions;
 using System;
-using System.Security.Claims;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 
 namespace Epilepsy_Health_App.Services.Users.Infrastructure.Controllers
 {
     internal sealed class ClaimsController : IClaimsController
     {
-        public Guid GetUserId(ClaimsIdentity claims) 
-            => claims is null
-            ? throw new EmptyClaimsException()
-            : !Guid.TryParse(claims.FindFirst("sub")?.Value, out Guid result) 
-            ? throw new EmptyClaimsException() 
-            : result;
+        public Guid GetUserId(string jwt)
+        {
+            jwt = jwt.Remove(0, jwt.IndexOf(' ')).Trim();
+            return new JwtSecurityTokenHandler().ReadToken(jwt) as JwtSecurityToken is null
+                       ? throw new EmptyClaimsException()
+                       : !Guid.TryParse((new JwtSecurityTokenHandler().ReadToken(jwt) as JwtSecurityToken).Claims.First(claim => claim.Type == "sub").Value, out Guid result)
+                       ? throw new EmptyClaimsException()
+                       : result;
+        }
     }
 }

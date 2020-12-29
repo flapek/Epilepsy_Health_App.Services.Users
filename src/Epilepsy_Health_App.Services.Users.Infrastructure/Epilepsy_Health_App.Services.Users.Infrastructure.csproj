@@ -12,6 +12,7 @@
     <PackageReference Include="Joint.DB.Mongo" Version="0.0.151" />
     <PackageReference Include="Joint.Discovery.Consul" Version="0.0.151" />
     <PackageReference Include="Joint.Exception" Version="0.0.151" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.8.0" />
   </ItemGroup>
 
   <ItemGroup>

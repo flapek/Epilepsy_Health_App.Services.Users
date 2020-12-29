@@ -5,6 +5,6 @@ namespace Epilepsy_Health_App.Services.Users.Application.Controllers
 {
     public interface IClaimsController
     {
-        Guid GetUserId(ClaimsIdentity claims);
+        Guid GetUserId(string jwt);
     }
 }

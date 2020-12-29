@@ -13,7 +13,7 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories
     {
         private readonly IMongoRepository<UserDocument, Guid> _repository;
 
-        public UserRepository(IMongoRepository<UserDocument, Guid> repository) 
+        public UserRepository(IMongoRepository<UserDocument, Guid> repository)
             => _repository = repository;
 
         public async Task<List<User>> GetAsync()
@@ -31,8 +31,13 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Repositories
         public Task<List<User>> GetAsync(List<string> emails)
             => Task.FromResult(emails.Select(email => _repository.GetAsync(x => x.Email == email).Result.AsEntity()).ToList());
 
-        public async Task UpdateAsync(Guid id, User user) 
-            => await _repository.UpdateAsync(user.AsDocument(), x => x.Id == id);
-
+        public async Task UpdateAsync(Guid id, User user)
+        {
+            var userFromDb = await GetAsync(id);
+            user = new User(user.Id, userFromDb.Email, userFromDb.Password, 
+                user.Anonymous, user.Firstname, user.Lastname, user.Weight,
+                user.Height, user.DayOfBirth);
+            await _repository.UpdateAsync(user.AsDocument(), x => x.Id == id);
+        }
     }
 }
