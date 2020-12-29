@@ -1,5 +1,7 @@
-﻿using Epilepsy_Health_App.Services.Users.Core.Repositories;
+﻿using Epilepsy_Health_App.Services.Users.Application.Controllers;
+using Epilepsy_Health_App.Services.Users.Core.Repositories;
 using Epilepsy_Health_App.Services.Users.Infrastructure.AutoMapper;
+using Epilepsy_Health_App.Services.Users.Infrastructure.Controllers;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Exceptions;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo;
 using Epilepsy_Health_App.Services.Users.Infrastructure.Mongo.Documents;
@@ -20,8 +22,9 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure
     {
         public static IJointBuilder AddInfrastructure(this IJointBuilder builder)
         {
-            builder.Services.AddTransient<IUserRepository, UserRepository>();
-            builder.Services.AddAutoMapperProfile();
+            builder.Services.AddTransient<IUserRepository, UserRepository>()
+                .AddTransient<IClaimsController, ClaimsController>()
+                .AddAutoMapperProfile();
 
             return builder
                 .AddHttpClient()

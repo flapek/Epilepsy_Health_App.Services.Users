@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Epilepsy_Health_App.Services.Users.Application.Commands;
+using Epilepsy_Health_App.Services.Users.Application.Controllers;
 using Epilepsy_Health_App.Services.Users.Application.DTO;
 using Epilepsy_Health_App.Services.Users.Application.Queries;
 using Joint.CQRS.Commands;
@@ -17,10 +19,14 @@ namespace Epilepsy_Health_App.Services.Users.Api.Controllers
     {
         readonly IQueryDispatcher _queryDispatcher;
         readonly ICommandDispatcher _commandDispatcher;
-        public UsersController(IQueryDispatcher queryDispatcher, ICommandDispatcher commandDispatcher)
+        readonly IClaimsController _claimsController;
+
+        public UsersController(IQueryDispatcher queryDispatcher, 
+            ICommandDispatcher commandDispatcher, IClaimsController claimsController)
         {
             _queryDispatcher = queryDispatcher;
             _commandDispatcher = commandDispatcher;
+            _claimsController = claimsController;
         }
 
         /// <summary>
@@ -49,8 +55,10 @@ namespace Epilepsy_Health_App.Services.Users.Api.Controllers
         [ProducesResponseType(StatusCodes.Status202Accepted)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public async Task<IActionResult> Update([FromBody] UpdateUserData command) 
-            => Accepted(_commandDispatcher.SendAsync(command));
-
+        public async Task<IActionResult> Update([FromBody] UpdateUserData command)
+        {
+            command.Id = _claimsController.GetId(HttpContext.User.Identity as ClaimsIdentity);
+            return Accepted(_commandDispatcher.SendAsync(command));
+        }
     }
 }
