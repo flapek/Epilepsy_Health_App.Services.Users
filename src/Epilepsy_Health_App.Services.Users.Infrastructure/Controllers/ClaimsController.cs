@@ -9,11 +9,18 @@ namespace Epilepsy_Health_App.Services.Users.Infrastructure.Controllers
 {
     internal sealed class ClaimsController : IClaimsController
     {
-        public Guid GetId(IEnumerable<Claim> claims)
+        public Guid GetUserId(ClaimsIdentity claims)
         {
-            return claims is null
-                ? throw new EmptyClaimsException()
-                : Guid.TryParse(claims.FirstOrDefault(x => x.Type == "sub").Value, out var result) ? result : throw new EmptyClaimsException();
+            Guid? result = null;
+            if (claims != null)
+            {
+                var id = claims.FindFirst("sub")?.Value;
+                if (string.IsNullOrEmpty(id) || !Guid.TryParse(id, out Guid userId))
+                    throw new EmptyClaimsException();
+                result = userId;
+            }
+
+            return result.Value;
         }
     }
 }

@@ -42,13 +42,18 @@ namespace Epilepsy_Health_App.Services.Users.Api
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseInfrastructure();
+
+            app.UseCors(x => x
+              .AllowAnyOrigin()
+              .AllowAnyMethod()
+              .AllowAnyHeader());
+
             app.UseSwaggerDocs();
 
             app.UseHttpsRedirection();
 
             app.UseRouting();
-
-            app.UseInfrastructure();
 
             app.UseEndpoints(endpoints =>
             {

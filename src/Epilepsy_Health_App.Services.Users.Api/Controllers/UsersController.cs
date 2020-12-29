@@ -57,7 +57,7 @@ namespace Epilepsy_Health_App.Services.Users.Api.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Update([FromBody] UpdateUserData command)
         {
-            command.Id = _claimsController.GetId(HttpContext.User.Claims);
+            command.Id = _claimsController.GetUserId(HttpContext.User.Identity as ClaimsIdentity);
             return Accepted(_commandDispatcher.SendAsync(command));
         }
     }
